@@ -1,0 +1,17 @@
+"I" "1" "The law of demand suggests that as the price of a good or service increases, the quantity demanded by consumers decreases, assuming all other factors remain constant."
+    Keywords: Law of Demand, Price, Quantity Demanded, Consumers, Inverse Relationship, Ceteris Paribus
+
+    "I" "2" "Elasticity of demand measures the responsiveness of the quantity demanded of a good or service to a change in its price, income, or the price of related goods."
+    Keywords: Elasticity of Demand, Responsiveness, Quantity Demanded, Price, Income, Related Goods, Price Elasticity of Demand, Income Elasticity of Demand, Cross-Price Elasticity of Demand
+
+    "II" "1" "Perfect competition is a market structure characterized by a large number of buyers and sellers, homogeneous products, perfect information, and free entry and exit."
+    Keywords: Perfect Competition, Market Structure, Large Number of Buyers, Large Number of Sellers, Homogeneous Products, Perfect Information, Free Entry, Free Exit
+
+    "II" "2" "A monopoly is a market structure where a single seller controls the entire supply of a particular product or service, allowing them to dictate prices and restrict competition."
+    Keywords: Monopoly, Market Structure, Single Seller, Control of Supply, Price Maker, Restricted Competition
+
+    "III" "1" "GDP, or Gross Domestic Product, is the total monetary or market value of all the finished goods and services produced within a country's borders in a specific time period."
+    Keywords: GDP, Gross Domestic Product, Monetary Value, Market Value, Finished Goods, Services, Country's Borders, Specific Time Period
+
+    "III" "2" "Inflation is a sustained increase in the general price level of goods and services in an economy over a period of time, resulting in a decrease in the purchasing power of money."
+    Keywords: Inflation, Sustained Increase, General Price Level, Goods, Services, Economy, Purchasing Power, Money

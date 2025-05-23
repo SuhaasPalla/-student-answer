@@ -1,0 +1,23 @@
+[project]
+name = "transgrade"
+version = "0.1.0"
+description = "transgrade using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.119.0,<1.0.0"
+]
+
+[project.scripts]
+transgrade = "transgrade.main:run"
+run_crew = "transgrade.main:run"
+train = "transgrade.main:train"
+replay = "transgrade.main:replay"
+test = "transgrade.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"

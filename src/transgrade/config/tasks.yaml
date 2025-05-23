@@ -1,0 +1,156 @@
+#analyze_task:
+#  description: >
+#    You are an Academic Answer Analyzer. For each student answer:
+    
+ #   1. Carefully read the entire Answer provided.
+#    2. Summarize its core meaning into a **single, clear, grammatically correct sentence**.
+#        - Preserve domain-specific terms and the original intent.
+#        - Do not add new information.
+#        - Use standard American English.
+#        - No numbering or headers—just the summary line.
+    
+#    3. Then, from the summary, **extract key subject-specific concepts**:
+#        - Include domain-relevant terms, processes, names, historical facts, scientific terminology, etc.
+#        - Avoid generic words (e.g., "important", "thing") unless part of a technical phrase.
+#        - Keywords should help a teacher understand what concepts are evaluated.
+    
+#    Input arrives as lines of:
+#        "section" "question" "Answer"
+#    with a blank line between entries.
+    
+#    You must output the **summary line first**, followed by its **keyword line**.
+    
+#  expected_output: >
+#    Output format should strictly follow:
+    
+#        "section" "question" "Summary"
+#        Keywords: keyword1, keyword2, keyword3, ...
+    
+#    Separate each entry with a blank line.
+    
+#    Example:
+    
+#        "I" "1" "Our environment contains quantifiable resources that satisfy human needs."
+#        Keywords: Resources, Environment, Human Needs, Quantification
+
+#        "I" "2" "Examples include Tarkand, Schicktishigar, and regions of Madhya Pradesh."
+#        Keywords: Tarkand, Schicktishigar, Madhya Pradesh, Geographic Examples
+
+#  agent: summary_and_keyword_agent
+
+# qa_extraction_task:
+#   description: >
+#     Process OCR-extracted data from educational answer keys to extract structured Q&A content. 
+#     The input is a list of text blocks, each with bounding boxes and confidence scores, representing scanned question-answer documents.
+    
+#     Your role is to:
+#       - Reconstruct the logical order of text (based on question numbers and section headers).
+#       - Identify and group questions and answers accurately.
+#       - Detect and retain section names such as "Section I", "Section II", etc.
+#       - Merge multiline answers into single coherent paragraphs (fixing broken sentences, removing line noise).
+#       - Remove artifacts like misplaced punctuation, OCR errors, and improper symbols.
+    
+#     Maintain educational clarity and proper formatting. Avoid hallucinating or rewording student answers.
+
+#   expected_output: >
+#     The expected output is a clean, Markdown-formatted document that includes:
+    
+#       - Optional section headers in the format: ## Section I (1×5=5M)
+#       - Each question formatted as: **Qn) [question text]**
+#       - Each answer formatted as: **Answer:** [answer text]
+#       - Proper line breaks, punctuation, and spacing.
+#       - Questions and answers should be in original order of appearance.
+#       - Multi-line answers should be merged into well-formed, grammatically correct paragraphs.
+#       - Remove any extraneous text or artifacts from the OCR process.
+
+#   agent: qa_extraction_agent
+  
+
+# contextual_task:
+#   description: >
+#     Create a detailed context summary from the extracted answers that will help a grading agent understand the expected content and structure of correct responses.
+
+#     Your role is to analyze the output from qa_extraction_task and:
+#       - Read and understand the answers extracted from the previous Q&A extraction task.
+#       - Identify key patterns, topics, and conceptual expectations across all answers.
+#       - Synthesize these into a generalized context that describes what an ideal answer should include for each question.
+#       - Create guidelines that could be used to evaluate student answers against these model answers.
+#       - Do not copy answers verbatim; instead, abstract the core ideas to help a grading agent make informed evaluations.
+#       - Avoid hallucinations or introducing concepts not present in the answers.
+
+#     This context will serve as a prompt foundation for grading logic and LLM-based answer evaluations.
+
+#   expected_output: >
+#     The expected output is a Markdown-formatted context guide that includes:
+
+#       - A clear summary or bullet-point list for each question that outlines what the ideal answer should cover.
+#       - Logical structure that mirrors the Q&A order.
+#       - Educational tone with neutral phrasing—suitable for guiding an automated grading model.
+#       - No repetition of original answers; focus on abstraction and clarity.
+#       - Key concepts, topics, and expected knowledge points for each question.
+#       - Use proper grammar, structure, and consistent formatting for easy downstream parsing.
+
+#   agent: context_agent
+
+
+qa_extraction_task:
+  description: |
+    Extract all question-answer pairs from the provided OCR text data. The text is from educational material, likely a test or worksheet with questions and answers.
+    
+    For each pair:
+    1. Identify the question (typically numbered)
+    2. Capture the full answer text
+    3. Preserve any section headings
+    
+    Format your output as a structured markdown document with clear sections and proper numbering.
+    
+    The OCR data may have formatting issues, line breaks, or other inconsistencies - use your judgment to reconstruct coherent Q&A pairs.
+  expected_output: |
+    A markdown document containing all extracted question-answer pairs, organized by sections if applicable.
+    Format example:
+    ```
+    # Section Title (if present)
+    
+    ## Question 1: [Question text]
+    [Answer text]
+    
+    ## Question 2: [Question text]
+    [Answer text]
+    ...
+    ```
+
+contextual_task:
+  description: |
+    Using the Q&A pairs extracted in the previous task, create a comprehensive contextual analysis of the educational content.
+    
+    Your analysis should include:
+    1. Subject identification - determine what academic subject is being covered
+    2. Topic mapping - identify the main topics and subtopics 
+    3. Knowledge structure - organize the information into a coherent knowledge framework
+    4. Key concepts - highlight important terms, definitions, and concepts
+    5. Learning objectives - infer what students are expected to learn from this material
+    
+    Use the content of both questions and answers to develop a rich understanding of the educational material.
+  expected_output: |
+    A markdown document that provides contextual analysis of the educational content.
+    Format example:
+    ```
+    # Educational Context Analysis
+    
+    ## Subject Identification
+    [Subject area and level]
+    
+    ## Main Topics
+    1. [Topic 1]
+    2. [Topic 2]
+    ...
+    
+    ## Key Concepts
+    [List and explanation of important concepts]
+    
+    ## Learning Objectives
+    [What students should learn from this material]
+    
+    ## Additional Insights
+    [Any other relevant observations]
+    ```

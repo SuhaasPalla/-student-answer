@@ -1,0 +1,13 @@
+Your output must mirror this format, replacing the Answer with your Summary:
+    "section" "question" "Summary"
+
+Separate each output entry with one blank line.
+Example:
+
+    "I" "1" "Our environment contains quantifiable resources that satisfy human needs."
+
+    "I" "2" "Examples include Tarkand, Schicktishigar, and regions of Madhya Pradesh."
+
+    "II" "6" "Oceanic resources beyond 200 nautical miles are managed by international institutions."
+
+you MUST return the actual complete content as the final answer, not a summary.
