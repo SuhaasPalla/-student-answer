@@ -7,6 +7,7 @@ import logging
 import requests
 from datetime import datetime
 from flask import Flask, jsonify
+from flask_cors import CORS
 
 from transgrade.crew import Transgrade
 
@@ -124,6 +125,9 @@ def run_crew_pipeline(subject_id: str):
 def run():
     app = Flask(__name__)
     app.secret_key = 'super_secret_key'
+    
+    # Enable CORS for localhost:3000
+    CORS(app, origins=['http://localhost:3000'])
 
     @app.route('/')
     def index():
