@@ -121,36 +121,36 @@ qa_extraction_task:
 
 contextual_task:
   description: |
-    Using the Q&A pairs extracted in the previous task, create a comprehensive contextual analysis of the educational content.
-    
-    Your analysis should include:
-    1. Subject identification - determine what academic subject is being covered
-    2. Topic mapping - identify the main topics and subtopics 
-    3. Knowledge structure - organize the information into a coherent knowledge framework
-    4. Key concepts - highlight important terms, definitions, and concepts
-    5. Learning objectives - infer what students are expected to learn from this material
-    
-    Use the content of both questions and answers to develop a rich understanding of the educational material.
+    For each Q&A pair extracted in the previous task, generate an individual contextual analysis.
+
+    For every question and its corresponding answer, analyze the content to determine:
+    1. Subject identification – what academic subject is being addressed?
+    2. Topic and subtopic – what is the specific topic and subtopic?
+    3. Key concepts – what terms, definitions, or ideas are important?
+    4. Learning objective – what is the learner supposed to understand or learn from this Q&A?
+    5. Keywords – extract key terms relevant to the question and answer
+
+    Output your findings as a markdown document with a separate section for each Q&A pair.
+
   expected_output: |
-    A markdown document that provides contextual analysis of the educational content.
+    A markdown document with detailed contextual analysis for each Q&A pair.
+
     Format example:
     ```
-    # Educational Context Analysis
+    # Q&A Contextual Analysis
+
+    ## Question 1
+    **Q:** [The question text]  
     
-    ## Subject Identification
-    [Subject area and level]
-    
-    ## Main Topics
-    1. [Topic 1]
-    2. [Topic 2]
+    **Subject:** [Subject name]  
+    **Topic:** [Topic > Subtopic]  
+    **Key Concepts:** [List of important ideas or terms]  
+    **Learning Objective:** [What the learner should gain]  
+    **Keywords:** [Comma-separated list of keywords]
+
+    ---
+
+    ## Question 2
+    **Q:** ...  
     ...
-    
-    ## Key Concepts
-    [List and explanation of important concepts]
-    
-    ## Learning Objectives
-    [What students should learn from this material]
-    
-    ## Additional Insights
-    [Any other relevant observations]
     ```
