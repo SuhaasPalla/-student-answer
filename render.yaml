@@ -1,9 +1,1 @@
-services:
-  - type: web
-    name: crewai-service
-    env: python
-    buildCommand: |
-      pip install poetry
-      poetry install
-    startCommand: poetry run uvicorn src.my_project.main:app --host 0.0.0.0 --port 5000
-    plan: free
+
