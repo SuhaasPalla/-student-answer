@@ -894,6 +894,18 @@ wheels = [
 ]
 
 [[package]]
+name = "flask-cors"
+version = "4.0.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "flask" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/1c/41/89ea5af8b9d647036237c528abb2fdf8bb10b23b3f750e8e2da07873b270/flask_cors-4.0.2.tar.gz", hash = "sha256:493b98e2d1e2f1a4720a7af25693ef2fe32fbafec09a2f72c59f3e475eda61d2", size = 30954, upload-time = "2024-08-30T16:32:59.844Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e1/60/e941089faf4f50f2e0231d7f7af69308616a37e99da3ec75df60b8809db7/Flask_Cors-4.0.2-py2.py3-none-any.whl", hash = "sha256:38364faf1a7a5d0a55bd1d2e2f83ee9e359039182f5e6a029557e1f56d92c09a", size = 14467, upload-time = "2024-08-30T16:32:58.687Z" },
+]
+
+[[package]]
 name = "flatbuffers"
 version = "25.2.10"
 source = { registry = "https://pypi.org/simple" }
@@ -3720,6 +3732,7 @@ dependencies = [
     { name = "faiss-cpu" },
     { name = "firebase-admin" },
     { name = "flask" },
+    { name = "flask-cors" },
     { name = "google-generativeai" },
 ]
 
@@ -3729,6 +3742,7 @@ requires-dist = [
     { name = "faiss-cpu" },
     { name = "firebase-admin", specifier = ">=6.3.0,<7.0.0" },
     { name = "flask", specifier = ">=2.3.0,<3.0.0" },
+    { name = "flask-cors", specifier = ">=4.0.0,<5.0.0" },
     { name = "google-generativeai", specifier = ">=0.3.2" },
 ]
 
