@@ -129,15 +129,15 @@ def run():
     # Enable CORS for localhost:3000
     CORS(app, origins=['http://localhost:3000'])
 
-    @app.route('/')
+    @app.route('/context')
     def index():
         return jsonify({
             "message": "Transgrade API is running",
-            "usage": "Access /run/<subject_id> to process a subject",
-            "health_check": "/health"
+            "usage": "Access /context/run/<subject_id> to process a subject",
+            "health_check": "/context/health"
         })
 
-    @app.route('/run/<subject_id>', methods=['GET'])
+    @app.route('/context/run/<subject_id>', methods=['GET'])
     def run_pipeline_route(subject_id):
         """Direct API endpoint to run crew pipeline with subject_id"""
         if not subject_id:
@@ -156,7 +156,7 @@ def run():
         }), 200 if success else 500
 
     # Health check endpoint to verify Django API connectivity
-    @app.route('/health')
+    @app.route('/context/health')
     def health_check():
         try:
             response = requests.get(f"{DJANGO_API_BASE_URL}/subjects/", timeout=5)
