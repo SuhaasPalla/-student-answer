@@ -20,7 +20,7 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for React frontend
 
 # Base URL for your Django API
-BASE_URL = "https://00c4-124-123-191-159.ngrok-free.app"
+BASE_URL = "http://localhost:8000"
 
 def get_key_json_from_api(subject_id):
     """

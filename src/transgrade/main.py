@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
 # Django API configuration
-DJANGO_API_BASE_URL = "https://00c4-124-123-191-159.ngrok-free.app"
+DJANGO_API_BASE_URL = "http://localhost:8000"
 
 # -------------------------------
 # 🔍 Function to get KeyOCR by subject_id
@@ -168,7 +168,7 @@ def run():
             return jsonify({"status": "unhealthy", "django_api": "disconnected", "error": str(e)})
 
     # Get port from environment variable (Render sets this) or default to 5000
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 5001))
     app.run(host='0.0.0.0', port=port, debug=False)
 
 # -------------------------------
